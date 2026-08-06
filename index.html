@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BBpatrol 雙平台測速系統 - 告別罰單，享受駕駛</title>
+    <link rel="icon" type="image/png" href="LOGO-page.png">
+    <meta name="description" content="BBpatrol 雙平台測速系統，提供精準測速、路況回報與專屬語音包。">
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0d0d12; color: #f3f4f6; }
+        .text-brand-red { color: #e52e3d; }
+        .bg-brand-red { background-color: #e52e3d; }
+        .border-brand-red { border-color: #e52e3d; }
+        .phone-mockup { box-shadow: 0 25px 60px -15px rgba(229, 46, 61, 0.25); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden">
+
+    <!-- 導覽列 -->
+    <nav class="fixed w-full z-50 bg-[#0d0d12]/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <!-- 替換成你的 Logo 圖片，保留了原本的尺寸設定 -->
+                <img src="LOGO1.png" alt="BBpatrol Logo" class="w-10 h-10 md:w-12 md:h-12 object-contain rounded-lg">
+                
+                <span class="text-lg md:text-xl font-bold tracking-widest text-white">BBpatrol黑箱糾察隊</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
+                <a href="#tutorial" class="hover:text-white transition">功能教學</a>
+                <a href="#app-stats" class="hover:text-white transition">社群數據</a>
+                <a href="#reviews" class="hover:text-white transition">車友評價</a>
+                <a href="#pricing" class="hover:text-white transition">訂閱方案</a>
+            </div>
+            <a href="#download" class="bg-white text-black px-4 py-1.5 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-bold hover:bg-gray-200 transition">取得 APP</a>
+        </div>
+    </nav>
+
+    <!-- 首屏主視覺 (Hero Section) -->
+    <header class="relative pt-24 pb-16 md:pt-32 md:pb-20 lg:pt-40 lg:pb-24 overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-red-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+        
+        <!-- 這裡將 lg:grid-cols-2 改為 md:grid-cols-2 -->
+        <div class="max-w-7xl mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-10 lg:gap-12 items-center relative z-10">
+            
+            <!-- 左側文案 -->
+            <!-- 這裡將 lg:text-left 改為 md:text-left -->
+            <div class="space-y-6 md:space-y-8 text-center md:text-left">
+                <div class="inline-block bg-gray-900 border border-gray-700 text-brand-red text-[10px] md:text-xs px-3 py-1 rounded-full font-semibold tracking-wider">
+                    iOS/Android APP正式上架
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-[1.15]">
+                    告別罰單<br>
+                    <span class="text-brand-red">享受駕駛</span>
+                </h1>
+                <!-- 這裡將 lg:mx-0 改為 md:mx-0 -->
+                <p class="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed max-w-sm sm:max-w-md md:max-w-lg mx-auto md:mx-0">
+                    不只是測速照相提醒。BBpatrol 結合即時路況圖文回報、極簡懸浮視窗與客製化語音，讓每趟旅途都安全又充滿樂趣。
+                </p>
+                
+                <!-- 這裡將 lg:justify-start 改為 md:justify-start -->
+                <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center md:justify-start pt-2 px-4 sm:px-0">
+                    <a href="https://apps.apple.com/tw/app/bbpatrol%E9%BB%91%E7%AE%B1%E7%B3%BE%E5%AF%9F%E9%9A%8A/id6746429798" target="_blank" rel="noopener noreferrer" class="bg-brand-red text-white w-full sm:w-auto px-6 py-3.5 md:px-8 md:py-4 rounded-full font-bold text-sm md:text-lg hover:bg-red-700 transition flex items-center justify-center gap-2">
+                        <span>Apple Store 下載</span>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.timer_swift&pli=1" target="_blank" rel="noopener noreferrer" class="bg-gray-800 text-white w-full sm:w-auto px-6 py-3.5 md:px-8 md:py-4 rounded-full font-bold text-sm md:text-lg hover:bg-gray-700 transition border border-gray-700 flex items-center justify-center gap-2">
+                        <span>Google Play 下載</span>
+                    </a>
+                </div>
+    
+                <!-- 價值展示 (精準 4.3 星與亮白字體優化) -->
+                <!-- 這裡將 lg:justify-start 改為 md:justify-start -->
+                <div class="pt-6 md:pt-10 flex flex-wrap justify-center md:justify-start gap-8 md:gap-12 opacity-90">
+                    
+                    <!-- 4.3 顆星區塊 -->
+                    <div class="flex flex-col items-center md:items-start">
+                        <div class="flex items-center gap-1 mb-1">
+                            <!-- 滿星 1 -->
+                            <svg class="w-5 h-5 md:w-6 md:h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <!-- 滿星 2 -->
+                            <svg class="w-5 h-5 md:w-6 md:h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <!-- 滿星 3 -->
+                            <svg class="w-5 h-5 md:w-6 md:h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <!-- 滿星 4 -->
+                            <svg class="w-5 h-5 md:w-6 md:h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <!-- 4.3 星 (精準裁切 40% 金黃色) -->
+                            <div class="relative w-5 h-5 md:w-6 md:h-6 text-gray-700">
+                                <!-- 底圖：灰色星星 -->
+                                <svg class="absolute w-full h-full text-gray-600" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                <!-- 上層：黃色星星 -->
+                                <div class="absolute top-0 left-0 h-full overflow-hidden w-[40%]">
+                                    <svg class="w-5 h-5 md:w-6 md:h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 文字放大 -->
+                        <div class="text-sm md:text-base font-bold text-gray-300 mt-1">4.3 / 5 好評</div>
+                    </div>
+    
+                    <!-- 下載量區塊 -->
+                    <!-- 這裡將 lg:items-start 改為 md:items-start -->
+                    <div class="flex flex-col items-center md:items-start">
+                        <div class="text-white font-black text-2xl md:text-3xl mb-1 tracking-wide">20,000+</div>
+                        <div class="text-xs md:text-sm text-gray-400 font-medium">活躍車主下載</div>
+                    </div>
+    
+                    <!-- 排名區塊 -->
+                    <!-- 這裡將 lg:items-start 改為 md:items-start -->
+                    <div class="flex flex-col items-center md:items-start">
+                        <div class="text-white font-black text-2xl md:text-3xl mb-1 tracking-wide">Top #3</div>
+                        <div class="text-xs md:text-sm text-gray-400 font-medium">導航工具排行榜</div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- 右側手機 Mockup -->
+            <!-- 這裡將 lg:justify-end 改為 md:justify-end，lg:mt-0 改為 md:mt-0 -->
+            <div class="relative flex justify-center md:justify-end mt-8 md:mt-0">
+                <div class="w-[240px] h-[500px] md:w-[280px] md:h-[580px] bg-[#1a1921] rounded-[35px] md:rounded-[40px] border-[6px] md:border-[8px] border-gray-800 phone-mockup relative overflow-hidden flex flex-col items-center justify-center transform scale-95 md:scale-100">
+                    <div class="absolute top-0 w-24 md:w-32 h-5 md:h-6 bg-gray-800 rounded-b-xl md:rounded-b-2xl z-20"></div>
+                    <div class="w-full h-full p-4 flex flex-col relative z-10">
+                        <div class="mt-8 md:mt-12 flex justify-between items-start">
+                            <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full border-[3px] md:border-4 border-red-500 flex items-center justify-center text-black font-black text-base md:text-lg shadow-lg">60</div>
+                            <div class="w-8 h-8 md:w-10 md:h-10 bg-yellow-500 rounded flex items-center justify-center text-black font-black text-sm md:text-base shadow-lg">固</div>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center justify-center">
+                            <div class="w-40 h-40 md:w-48 md:h-48 rounded-full border-[6px] md:border-8 border-gray-700 border-t-brand-red flex flex-col items-center justify-center relative">
+                                <img src="LOGO1.png" alt="BBpatrol" class="w-32 h-32 md:w-40 md:h-40 object-contain drop-shadow-2xl">
+                                <div class="absolute -bottom-3 bg-gray-800 text-white px-3 md:px-4 py-1 rounded-full text-[10px] md:text-xs border border-gray-600">15 公尺</div>
+                            </div>
+                        </div>
+                        <div class="h-16 md:h-20 w-full bg-gray-900 rounded-xl md:rounded-2xl border border-gray-800 flex items-center justify-around px-2 md:px-4 mt-auto">
+                            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-red-500/20 text-brand-red flex items-center justify-center text-base md:text-xl">📢</div>
+                            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-800 text-gray-400 flex items-center justify-center text-sm md:text-base">⚙️</div>
+                            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-800 text-gray-400 flex items-center justify-center text-sm md:text-base">👤</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- APP 運作流程圖 -->
+    <section class="border-y border-gray-900 bg-[#121216] py-10 md:py-16">
+        <div class="max-w-4xl mx-auto px-4 md:px-6 flex justify-center">
+            <!-- 記得確認檔名與路徑是否正確 -->
+            <img src="1.png" alt="APP 運作流程：一鍵回報後，系統會立即標記位置並通知附近車友" class="w-full h-auto rounded-2xl shadow-2xl">
+        </div>
+    </section>
+
+    <!-- 2. APP 介紹核心交錯區塊 (Tutorial Section) -->
+    <section id="tutorial" class="py-16 md:py-28 bg-[#121216] border-t border-gray-900 space-y-24 md:space-y-40">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+
+            <!-- 核心大標題 1：APP特色 (左文右圖) -->
+            <div class="grid lg:grid-cols-12 gap-8 md:gap-16 items-center">
+                <div class="lg:col-span-5 space-y-6 flex flex-col justify-center">
+                    <div class="text-brand-red font-sans text-2xl tracking-widest font-black text-center lg:text-left">/ 01</div>
+                    <h2 class="text-3xl md:text-5xl font-black text-white leading-tight text-center lg:text-left">APP獨家優勢</h2>
+                    
+                    <!-- 條列式排版 -->
+                    <ul class="space-y-4 text-gray-400 text-sm md:text-lg leading-relaxed text-left max-w-md mx-auto lg:mx-0">
+                        <li class="flex items-start gap-3">
+                            <span class="text-brand-red mt-1 flex-shrink-0">●</span>
+                            <span><strong class="text-white text-base md:text-xl font-bold block mb-1">提供當日即時資訊</strong>黑箱、雷射槍、臨檢、環保局稽查、噪音偵測。</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-brand-red mt-1 flex-shrink-0">●</span>
+                            <span><strong class="text-white text-base md:text-xl font-bold block mb-1">懸浮模式</strong>iOS 系統也能使用，完美適用所有地圖導航工具。</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-brand-red mt-1 flex-shrink-0">●</span>
+                            <span><strong class="text-white text-base md:text-xl font-bold block mb-1">一鍵回報通知所有使用者</strong>即時獲得走在你前面的駕駛所提供的最新路況。</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- 右側：3張圖卡左右滑動牆 (使用自訂箭頭圖片) -->
+                <div class="lg:col-span-7 relative group w-full">
+                    <button onclick="scrollSlider('featureSlider', -1)" class="absolute -left-12 top-1/2 -translate-y-1/2 z-30 w-10 h-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 hidden md:flex hover:scale-110">
+                        <img src="left-arrow.png" alt="上一張" class="w-full h-full object-contain">
+                    </button>
+                    <div id="featureSlider" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth hide-scrollbar gap-6 py-4">
+                        <div class="snap-center shrink-0 w-full flex justify-center"><img src="2.png" alt="特色一" class="w-full max-w-[420px] h-auto object-contain rounded-2xl shadow-2xl"></div>
+                        <div class="snap-center shrink-0 w-full flex justify-center"><img src="3.png" alt="特色二" class="w-full max-w-[420px] h-auto object-contain rounded-2xl shadow-2xl"></div>
+                        <div class="snap-center shrink-0 w-full flex justify-center"><img src="4.png" alt="特色三" class="w-full max-w-[420px] h-auto object-contain rounded-2xl shadow-2xl"></div>
+                    </div>
+                    <button onclick="scrollSlider('featureSlider', 1)" class="absolute -right-12 top-1/2 -translate-y-1/2 z-30 w-10 h-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 hidden md:flex hover:scale-110">
+                        <img src="right-arrow.png" alt="下一張" class="w-full h-full object-contain">
+                    </button>
+                    <!-- 小圓點 -->
+                    <div class="flex justify-center gap-2 mt-4" id="featureDots">
+                        <span class="w-2.5 h-2.5 rounded-full bg-brand-red"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-gray-700"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-gray-700"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 核心大標題 2：如何回報 (左圖右文 反轉排版) -->
+        <div class="bg-[#0d0d12] py-20 border-y border-gray-900">
+            <div class="max-w-7xl mx-auto px-4 md:px-6 grid lg:grid-cols-12 gap-8 md:gap-16 items-center">
+                
+                <!-- 【圖卡區塊】加上 order-2：手機版排在下；lg:order-1 保持桌機版在左 -->
+                <div class="order-2 lg:order-1 lg:col-span-7 relative group w-full">
+                    <button onclick="scrollSlider('reportSlider', -1)" class="absolute -left-12 top-1/2 -translate-y-1/2 z-30 w-10 h-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 hidden md:flex hover:scale-110">
+                        <img src="left-arrow.png" alt="上一張" class="w-full h-full object-contain">
+                    </button>
+                    <div id="reportSlider" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth hide-scrollbar gap-6 py-4">
+                        <div class="snap-center shrink-0 w-full flex justify-center"><img src="5.png" alt="回報一" class="w-full max-w-[420px] h-auto object-contain rounded-2xl shadow-2xl"></div>
+                        <div class="snap-center shrink-0 w-full flex justify-center"><img src="6.png" alt="回報二" class="w-full max-w-[420px] h-auto object-contain rounded-2xl shadow-2xl"></div>
+                        <div class="snap-center shrink-0 w-full flex justify-center"><img src="7.png" alt="回報三" class="w-full max-w-[420px] h-auto object-contain rounded-2xl shadow-2xl"></div>
+                    </div>
+                    <button onclick="scrollSlider('reportSlider', 1)" class="absolute -right-12 top-1/2 -translate-y-1/2 z-30 w-10 h-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 hidden md:flex hover:scale-110">
+                        <img src="right-arrow.png" alt="下一張" class="w-full h-full object-contain">
+                    </button>
+                    <div class="flex justify-center gap-2 mt-4" id="reportDots">
+                        <span class="w-2.5 h-2.5 rounded-full bg-brand-red"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-gray-700"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-gray-700"></span>
+                    </div>
+                </div>
+        
+                <!-- 【文字區塊】加上 order-1：手機版排在上；lg:order-2 保持桌機版在右 -->
+                <div class="order-1 lg:order-2 lg:col-span-5 space-y-6 text-center lg:text-left">
+                    <div class="text-brand-red font-sans text-2xl tracking-widest font-black text-center lg:text-left">/ 02</div>
+                    <h2 class="text-3xl md:text-5xl font-black text-white leading-tight">如何回報</h2>
+                    <p class="text-gray-400 text-sm md:text-lg leading-relaxed">
+                        發現前方有移動式黑箱、三眼雷射槍、或是臨時突發路況？動動手指拍照上傳、或者直接利用最安全的安全免打字錄音回報，全台車友即時與你連線。
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <!-- 核心大標題 3：多樣化音效 (左文右圖) -->
+            <div class="grid lg:grid-cols-12 gap-8 md:gap-16 items-center">
+                <div class="lg:col-span-5 space-y-6 text-center lg:text-left">
+                    <div class="text-brand-red font-sans text-2xl tracking-widest font-black text-center lg:text-left">/ 03</div>
+                    <h2 class="text-3xl md:text-5xl font-black text-white leading-tight">多樣化音效</h2>
+                    <p class="text-gray-400 text-sm md:text-lg leading-relaxed">
+                        每天開車通勤，提示音總是那幾句死板板的機器音？在這裡您可以隨心所欲套用最有人氣的趣味迷因音效，甚至是親自為車友、為自己錄製一組專屬的音效!
+                    </p>
+                </div>
+                
+                <!-- 右側：3張圖卡左右滑動牆 (使用自訂箭頭圖片) -->
+                <div class="lg:col-span-7 relative group w-full">
+                    <button onclick="scrollSlider('audioSlider', -1)" class="absolute -left-12 top-1/2 -translate-y-1/2 z-30 w-10 h-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 hidden md:flex hover:scale-110">
+                        <img src="left-arrow.png" alt="上一張" class="w-full h-full object-contain">
+                    </button>
+                    <div id="audioSlider" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth hide-scrollbar gap-6 py-4">
+                        <div class="snap-center shrink-0 w-full flex justify-center"><img src="8.png" alt="音效一" class="w-full max-w-[420px] h-auto object-contain rounded-2xl shadow-2xl"></div>
+                        <div class="snap-center shrink-0 w-full flex justify-center"><img src="9.png" alt="音效二" class="w-full max-w-[420px] h-auto object-contain rounded-2xl shadow-2xl"></div>
+                        <div class="snap-center shrink-0 w-full flex justify-center"><img src="10.png" alt="音效三" class="w-full max-w-[420px] h-auto object-contain rounded-2xl shadow-2xl"></div>
+                    </div>
+                    <button onclick="scrollSlider('audioSlider', 1)" class="absolute -right-12 top-1/2 -translate-y-1/2 z-30 w-10 h-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 hidden md:flex hover:scale-110">
+                        <img src="right-arrow.png" alt="下一張" class="w-full h-full object-contain">
+                    </button>
+                    <div class="flex justify-center gap-2 mt-4" id="audioDots">
+                        <span class="w-2.5 h-2.5 rounded-full bg-brand-red"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-gray-700"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-gray-700"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 發光儀表板統計 -->
+    <section id="app-stats" class="py-16 md:py-24 bg-[#0d0d12] border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 text-center">
+            <h2 class="text-2xl sm:text-3xl lg:text-5xl font-black text-white mb-3 md:mb-4">強大社群，數據會說話</h2>
+            <p class="text-gray-400 text-sm md:text-base mb-12 md:mb-16 max-w-2xl mx-auto px-2">每一次的即時回報，都在為下一位車主省下荷包與時間。</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 md:gap-12 max-w-5xl mx-auto">
+                <!-- 儀表板 1 -->
+                <div class="flex flex-col items-center group">
+                    <div class="relative w-48 h-28 md:w-56 md:h-32">
+                        <svg class="w-full h-full overflow-visible" viewBox="0 0 100 55">
+                            <defs>
+                                <filter id="glow-red" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feGaussianBlur stdDeviation="2" result="blur" />
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                </filter>
+                            </defs>
+                            <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#1f1e24" stroke-width="6" stroke-linecap="round" />
+                            <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#e52e3d" stroke-width="6" stroke-linecap="round" 
+                                  stroke-dasharray="126" stroke-dashoffset="126" class="transition-all duration-[2000ms] ease-out gauge-arc" data-percent="85" filter="url(#glow-red)" />
+                        </svg>
+                        <div class="absolute bottom-0 left-0 w-full flex justify-center translate-y-2 md:translate-y-3">
+                            <div class="flex items-baseline text-white">
+                                <span class="text-3xl md:text-4xl font-black counter" data-target="20000">0</span>
+                                <span class="text-brand-red font-bold ml-1 text-lg md:text-xl">+</span>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="mt-8 md:mt-10 text-lg md:text-xl font-bold text-white">活躍駕駛人數</h4>
+                </div>
+                <!-- 儀表板 2 -->
+                <div class="flex flex-col items-center group">
+                    <div class="relative w-48 h-28 md:w-56 md:h-32">
+                        <svg class="w-full h-full overflow-visible" viewBox="0 0 100 55">
+                            <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#1f1e24" stroke-width="6" stroke-linecap="round" />
+                            <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#e52e3d" stroke-width="6" stroke-linecap="round" 
+                                  stroke-dasharray="126" stroke-dashoffset="126" class="transition-all duration-[2000ms] ease-out gauge-arc" data-percent="65" filter="url(#glow-red)" />
+                        </svg>
+                        <div class="absolute bottom-0 left-0 w-full flex justify-center translate-y-2 md:translate-y-3">
+                            <div class="flex items-baseline text-white">
+                                <span class="text-3xl md:text-4xl font-black counter" data-target="500">0</span>
+                                <span class="text-brand-red font-bold ml-1 text-lg md:text-xl">+</span>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="mt-8 md:mt-10 text-lg md:text-xl font-bold text-white">每月即時回報數</h4>
+                </div>
+                <!-- 儀表板 3 -->
+                <div class="flex flex-col items-center group">
+                    <div class="relative w-48 h-28 md:w-56 md:h-32">
+                        <svg class="w-full h-full overflow-visible" viewBox="0 0 100 55">
+                            <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#1f1e24" stroke-width="6" stroke-linecap="round" />
+                            <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#e52e3d" stroke-width="6" stroke-linecap="round" 
+                                  stroke-dasharray="126" stroke-dashoffset="126" class="transition-all duration-[2000ms] ease-out gauge-arc" data-percent="95" filter="url(#glow-red)" />
+                        </svg>
+                        <div class="absolute bottom-0 left-0 w-full flex justify-center translate-y-2 md:translate-y-3">
+                            <div class="flex items-baseline text-white">
+                                <span class="text-xl md:text-2xl text-gray-400 mr-1">$</span>
+                                <span class="text-3xl md:text-4xl font-black counter" data-target="12000">0</span>
+                                <span class="text-brand-red font-bold ml-1 text-lg md:text-xl">+</span>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="mt-8 md:mt-10 text-lg md:text-xl font-bold text-white">每月替車主省下</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 網格化評論區 -->
+    <section id="reviews" class="py-16 md:py-24 bg-[#121216] border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-12 md:mb-16 flex flex-col items-center">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">車友們都怎麼說</h2>
+                
+                <!-- 替換成精準 4.3 顆星 SVG，並設定為置中 -->
+                <div class="flex items-center justify-center gap-1 mb-2">
+                    <!-- 滿星 1 -->
+                    <svg class="w-5 h-5 md:w-6 md:h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <!-- 滿星 2 -->
+                    <svg class="w-5 h-5 md:w-6 md:h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <!-- 滿星 3 -->
+                    <svg class="w-5 h-5 md:w-6 md:h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <!-- 滿星 4 -->
+                    <svg class="w-5 h-5 md:w-6 md:h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <!-- 4.3 星 (精準裁切 70% 金黃色) -->
+                    <div class="relative w-5 h-5 md:w-6 md:h-6 text-gray-700">
+                        <!-- 底圖：灰色星星 -->
+                        <svg class="absolute w-full h-full text-gray-600" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <!-- 上層：黃色星星 -->
+                        <div class="absolute top-0 left-0 h-full overflow-hidden w-[40%]">
+                            <svg class="w-5 h-5 md:w-6 md:h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="text-gray-400">4.3 顆星 / 來自駕駛的真實回饋</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-[#1a1921] p-6 md:p-8 rounded-2xl border border-gray-800 shadow-lg flex flex-col hover:border-gray-600 transition">
+                    <div class="text-yellow-500 text-sm mb-3">★★★★★</div>
+                    <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-6 flex-1">
+                        「自從用了 BBpatrol ，搭配習慣的導航地圖，幫我這罰單大戶避開了好多不合理罰單，必須支持!」
+                    </p>
+                    <div class="flex items-center gap-3 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white font-bold">王</div>
+                        <div>
+                            <div class="text-white font-bold text-sm">王X名</div>
+                            <div class="text-gray-500 text-xs">App Store 評價</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-[#1a1921] p-6 md:p-8 rounded-2xl border border-gray-800 shadow-lg flex flex-col hover:border-gray-600 transition">
+                    <div class="text-yellow-500 text-sm mb-3">★★★★★</div>
+                    <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-6 flex-1">
+                        「語音回報真的很方便！按一下就能提醒後面的車友，感覺自己加入一個大車隊XD。」
+                    </p>
+                    <div class="flex items-center gap-3 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white font-bold">林</div>
+                        <div>
+                            <div class="text-white font-bold text-sm">林x婷</div>
+                            <div class="text-gray-500 text-xs">Google Play 評價</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-[#1a1921] p-6 md:p-8 rounded-2xl border border-gray-800 shadow-lg flex flex-col hover:border-gray-600 transition">
+                    <div class="text-yellow-500 text-sm mb-3">★★★★★</div>
+                    <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-6 flex-1">
+                        「我幫自己的錄製了測速提醒音效。每次開車聽到莫名其妙的音效，所有人都一臉問號，開車變得一點都不無聊！」
+                    </p>
+                    <div class="flex items-center gap-3 mt-auto">
+                        <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white font-bold">張</div>
+                        <div>
+                            <div class="text-white font-bold text-sm">張X豪</div>
+                            <div class="text-gray-500 text-xs">App Store 評價</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 訂閱方案 -->
+    <section id="pricing" class="py-16 md:py-24 bg-[#0d0d12]">
+        <div class="max-w-5xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-10 md:mb-16">
+                <h2 class="text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-3 md:mb-4">APP免費使用</h2>
+                <p class="text-gray-400 text-sm md:text-base">或解鎖完整功能並支持BBpatrol</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8 px-2 sm:px-0">
+                <div class="bg-[#121216] border border-gray-800 rounded-2xl md:rounded-3xl p-6 md:p-10 flex flex-col">
+                    <h3 class="text-lg md:text-xl font-bold text-white mb-2">免費使用</h3>
+                    <div class="text-3xl md:text-4xl font-black text-white mb-4 md:mb-6">NT$ 0 <span class="text-sm md:text-base font-normal text-gray-500">/ 永久</span></div>
+                    <p class="text-gray-400 text-xs md:text-sm mb-6 md:mb-8 flex-1">適合剛下載 APP，想先體驗基本測速提醒與介面的車主。</p>
+                    <ul class="space-y-3 md:space-y-4 text-xs md:text-sm text-gray-300 mb-8 md:mb-10">
+                        <li class="flex items-center gap-2 md:gap-3"><div class="text-green-500">✔</div> 基本測速與懸浮視窗</li>
+                        <li class="flex items-center gap-2 md:gap-3"><div class="text-green-500">✔</div> 觀看公佈欄免費資訊</li>
+                        <li class="flex items-center gap-2 md:gap-3"><div class="text-green-500">✔</div> 可錄製與上傳1個自訂音效</li>
+                    </ul>
+                    <button class="w-full py-3 md:py-4 rounded-xl bg-gray-800 text-white font-bold text-sm md:text-base hover:bg-gray-700 transition">目前的方案</button>
+                </div>
+
+                <div class="bg-gradient-to-b from-[#2a171a] to-[#121216] border-2 border-brand-red rounded-2xl md:rounded-3xl p-6 md:p-10 flex flex-col relative transform md:-translate-y-4 shadow-2xl shadow-red-900/20 mt-4 md:mt-0">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-red text-white text-[10px] md:text-xs font-bold px-3 md:px-4 py-1 md:py-1.5 rounded-full">推薦訂閱</div>
+                    <h3 class="text-lg md:text-xl font-bold text-brand-red mb-2">標準訂閱</h3>
+                    <div class="text-3xl md:text-4xl font-black text-white mb-4 md:mb-6">完整解鎖</div>
+                    <p class="text-gray-400 text-xs md:text-sm mb-6 md:mb-8 flex-1">解鎖所有自訂功能，打造獨一無二的駕駛體驗。</p>
+                    <ul class="space-y-3 md:space-y-4 text-xs md:text-sm text-white mb-8 md:mb-10">
+                        <li class="flex items-center gap-2 md:gap-3"><div class="text-brand-red font-bold">✔</div> 無廣告</li>
+                        <li class="flex items-center gap-2 md:gap-3"><div class="text-brand-red font-bold">✔</div> 查看訂閱會員專屬當日即時資料</li>
+                        <li class="flex items-center gap-2 md:gap-3"><div class="text-brand-red font-bold">✔</div> 可錄製與上傳3個自訂音效</li>
+                        <li class="flex items-center gap-2 md:gap-3"><div class="text-brand-red font-bold">✔</div> 解鎖隨機語音功能</li>
+                        <li class="flex items-center gap-2 md:gap-3"><div class="text-brand-red font-bold">✔</div> 進入會員互助群</li>
+                    </ul>
+                    <a href="https://support.apple.com/zh-tw/billing?cid=gn-ols-billing-collection-helpful_topics" target="_blank" rel="noopener noreferrer" class="block text-center w-full py-3 md:py-4 rounded-xl bg-brand-red text-white font-bold text-sm md:text-base hover:bg-red-700 transition shadow-lg">立即升級</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 4. 常見問題 FAQ 區塊 -->
+        <section id="faq-section" class="py-16 md:py-24 bg-[#121216] border-t border-gray-900">
+            <div class="max-w-4xl mx-auto px-4 md:px-6">
+                <div class="text-center mb-10 md:mb-16">
+                    <h2 class="text-3xl md:text-5xl font-black text-white mb-4">常見問題 FAQ</h2>
+                    <p class="text-gray-400 text-sm md:text-base">關於 BBpatrol，車友們最常問的幾個問題</p>
+                </div>
+        
+                <div class="space-y-2">
+                    <!-- Q1 -->
+                    <div class="border-b border-gray-800">
+                        <button class="faq-button w-full text-left flex justify-between items-center py-5 text-white font-bold text-lg hover:text-brand-red transition-colors focus:outline-none">
+                            <span>Q. 錯過最佳回報點怎麼辦？</span>
+                            <span class="faq-icon text-2xl font-normal transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                            <p class="text-gray-400 pb-5 leading-relaxed">
+                                可以使用語音回報、圖文寫上備註或私訊 IG/LINE，工作人員會幫您的回報調整至正確位置。
+                            </p>
+                        </div>
+                    </div>
+        
+                    <!-- Q2 -->
+                    <div class="border-b border-gray-800">
+                        <button class="faq-button w-full text-left flex justify-between items-center py-5 text-white font-bold text-lg hover:text-brand-red transition-colors focus:outline-none">
+                            <span>Q. 收隊 vs 持續回報？</span>
+                            <span class="faq-icon text-2xl font-normal transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                            <p class="text-gray-400 pb-5 leading-relaxed">
+                                <strong class="text-white">收隊：</strong>警察已離開。<br>
+                                <strong class="text-white">持續回報：</strong>警察仍在現場。
+                            </p>
+                        </div>
+                    </div>
+        
+                    <!-- Q3 -->
+                    <div class="border-b border-gray-800">
+                        <button class="faq-button w-full text-left flex justify-between items-center py-5 text-white font-bold text-lg hover:text-brand-red transition-colors focus:outline-none">
+                            <span>Q. APP一定會提醒嗎？</span>
+                            <span class="faq-icon text-2xl font-normal transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                            <p class="text-gray-400 pb-5 leading-relaxed">
+                                即時回報制的特性，依靠眾多使用者當下目擊回報，確保資訊是「正在進行式」。所以若沒有提醒，代表安全或是尚未有人回報此處。
+                            </p>
+                        </div>
+                    </div>
+        
+                    <!-- Q4 -->
+                    <div class="border-b border-gray-800">
+                        <button class="faq-button w-full text-left flex justify-between items-center py-5 text-white font-bold text-lg hover:text-brand-red transition-colors focus:outline-none">
+                            <span>Q. App 準確度高嗎？</span>
+                            <span class="faq-icon text-2xl font-normal transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                            <p class="text-gray-400 pb-5 leading-relaxed">
+                                使用者越多、回報頻率越高，提醒則越即時、準確。目前用戶量快速成長，準確度已明顯提升。
+                            </p>
+                        </div>
+                    </div>
+        
+                    <!-- Q5 -->
+                    <div class="border-b border-gray-800">
+                        <button class="faq-button w-full text-left flex justify-between items-center py-5 text-white font-bold text-lg hover:text-brand-red transition-colors focus:outline-none">
+                            <span>Q. 語音包怎麼收藏？</span>
+                            <span class="faq-icon text-2xl font-normal transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                            <p class="text-gray-400 pb-5 leading-relaxed">
+                                在語音包點擊「愛心」即可加入收藏，可用於訂閱會員隨機切換功能。
+                            </p>
+                        </div>
+                    </div>
+        
+                    <!-- Q6 -->
+                    <div class="border-b border-gray-800">
+                        <button class="faq-button w-full text-left flex justify-between items-center py-5 text-white font-bold text-lg hover:text-brand-red transition-colors focus:outline-none">
+                            <span>Q. 三次提醒是什麼意思？</span>
+                            <span class="faq-icon text-2xl font-normal transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                            <div class="text-gray-400 pb-5 leading-relaxed space-y-2">
+                                <p>每個回報點提醒 3 次：</p>
+                                <ul class="list-decimal list-inside text-white font-medium pl-2">
+                                    <li>500m 提前提醒</li>
+                                    <li>100m 再次提醒</li>
+                                    <li>通過後提醒更新現況</li>
+                                </ul>
+                                <p class="pt-2">通過後按「收隊 / 持續回報」以更新現場狀況。</p>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </section>
+
+    <!-- 清爽版 Footer -->
+    <footer id="download" class="bg-[#121216] pt-16 pb-8 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-6 mb-12">
+            
+            <!-- 區塊 1：品牌與社群 (手機版排第 1，桌機版排第 1) -->
+            <div class="order-1 md:order-1 md:col-span-4 space-y-4">
+                <div class="flex items-center gap-2 mb-6">
+                    <img src="LOGO1.png" alt="BBpatrol Logo" class="w-8 h-8 object-contain rounded-lg">
+                    <span class="text-xl font-bold tracking-widest text-white">BBpatrol</span>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    智慧測速，安全同行。<br>加入全台最大的互助駕駛社群。
+                </p>
+                <p class="text-gray-400 text-sm mt-2">Email: weishuo@bbpatrol.com.tw</p>
+                <div class="flex gap-4 pt-4">
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/profile.php?id=61577787920069" target="_blank" rel="noopener noreferrer" class="w-8 h-8 flex items-center justify-center hover:opacity-80 hover:scale-110 transition-all duration-300">
+                        <img src="facebook.png" alt="BBpatrol Facebook" class="w-full h-full object-contain">
+                    </a>
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/bbpatrol.tw/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 flex items-center justify-center hover:opacity-80 hover:scale-110 transition-all duration-300">
+                        <img src="instagram.png" alt="BBpatrol Instagram" class="w-full h-full object-contain">
+                    </a>
+                    <!-- Threads -->
+                    <a href="https://www.threads.com/@bbpatrol.tw?xmt=AQG0wyQuBokbQv6PndQIaAmClPBKYTBOPL536py9IvwfjIYjN4GotcGjEuiCFOSl7iUE5v5h" target="_blank" rel="noopener noreferrer" class="w-8 h-8 flex items-center justify-center hover:opacity-80 hover:scale-110 transition-all duration-300">
+                        <img src="threads.png" alt="BBpatrol Threads" class="w-full h-full object-contain">
+                    </a>
+                    <!-- LINE -->
+                    <a href="https://lin.ee/7Gi34hZ" target="_blank" rel="noopener noreferrer" class="w-8 h-8 flex items-center justify-center hover:opacity-80 hover:scale-110 transition-all duration-300">
+                        <img src="line.png" alt="BBpatrol LINE" class="w-full h-full object-contain">
+                    </a>
+                </div>
+            </div>
+    
+            <!-- 區塊 2：下載 APP (手機版排第 2，桌機版排第 4) -->
+            <div class="order-2 md:order-4 md:col-span-3 space-y-4">
+                <h5 class="text-white font-bold mb-4 text-center md:text-left">立即下載 APP</h5>
+                <!-- 將 flex-col 改為 flex-row 讓圖片並排，並設定置中對齊 -->
+                <div class="flex flex-row justify-center md:justify-start gap-4">
+                    <!-- 將尺寸從 180px 大幅縮小為 w-14 h-14 或 w-16 h-16 -->
+                    <a href="https://apps.apple.com/tw/app/bbpatrol%E9%BB%91%E7%AE%B1%E7%B3%BE%E5%AF%9F%E9%9A%8A/id6746429798" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 hover:scale-110 transition-all duration-300 w-14 h-14 md:w-16 md:h-16 block">
+                        <img src="ios.png" alt="Download on the App Store" class="w-full h-full object-contain">
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.timer_swift&pli=1" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 hover:scale-110 transition-all duration-300 w-14 h-14 md:w-16 md:h-16 block">
+                        <img src="google-play.png" alt="GET IT ON Google Play" class="w-full h-full object-contain">
+                    </a>
+                </div>
+            </div>
+    
+            <!-- 區塊 3：功能導覽 (手機版排第 3，桌機版排第 2) -->
+            <div class="order-3 md:order-2 md:col-span-2 md:col-start-6 space-y-3 text-sm text-center md:text-left">
+                <h5 class="text-white font-bold mb-4">功能導覽</h5>
+                <a href="#tutorial" class="block text-gray-500 hover:text-white transition">功能教學</a>
+                <a href="#app-stats" class="block text-gray-500 hover:text-white transition">社群數據</a>
+                <a href="#reviews" class="block text-gray-500 hover:text-white transition">車友評價</a>
+                <a href="#pricing" class="block text-gray-500 hover:text-white transition">訂閱方案</a>
+            </div>
+            
+            <!-- 區塊 4：關於我們 (手機版排第 4，桌機版排第 3) -->
+            <div class="order-4 md:order-3 md:col-span-2 space-y-3 text-sm text-center md:text-left">
+                <h5 class="text-white font-bold mb-4">關於我們</h5>
+                <!-- 加上正確的連結 -->
+                <a href="privacy.html" class="block text-gray-500 hover:text-white transition">隱私權政策</a>
+                <a href="terms.html" class="block text-gray-500 hover:text-white transition">服務條款</a>
+                <a href="#faq-section" class="block text-gray-500 hover:text-white transition">常見問題 FAQ</a>
+            </div>
+    
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 pt-8 border-t border-gray-800 text-center md:text-right text-xs text-gray-600">
+            © 2026 BBpatrol. Powered and secured by Github Pages.
+        </div>
+    </footer>
+
+    <!-- 核心互動邏輯與數據動畫腳本 -->
+    <script>
+        // 1. 三組輪播牆控制邏輯
+        function initSlider(sliderId, dotsId) {
+            const slider = document.getElementById(sliderId);
+            const dots = document.getElementById(dotsId).querySelectorAll('span');
+            
+            slider.addEventListener('scroll', () => {
+                const width = slider.clientWidth;
+                const scrollLeft = slider.scrollLeft;
+                const activeIndex = Math.round(scrollLeft / width);
+                
+                dots.forEach((dot, index) => {
+                    if (index === activeIndex) {
+                        dot.classList.remove('bg-gray-700');
+                        dot.classList.add('bg-brand-red');
+                    } else {
+                        dot.classList.remove('bg-brand-red');
+                        dot.classList.add('bg-gray-700');
+                    }
+                });
+            });
+        }
+
+        initSlider('featureSlider', 'featureDots');
+        initSlider('reportSlider', 'reportDots');
+        initSlider('audioSlider', 'audioDots');
+
+        function scrollSlider(sliderId, direction) {
+            const slider = document.getElementById(sliderId);
+            slider.scrollBy({ left: direction * slider.clientWidth, behavior: 'smooth' });
+        }
+
+        // 2. 社群發光儀表板與數字動畫
+        document.addEventListener("DOMContentLoaded", () => {
+            const section = document.querySelector('#app-stats');
+            const counters = document.querySelectorAll('.counter');
+            const gauges = document.querySelectorAll('.gauge-arc');
+            let animated = false;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !animated) {
+                        animated = true;
+
+                        counters.forEach(counter => {
+                            const target = +counter.getAttribute('data-target');
+                            const updateCount = () => {
+                                const count = +counter.innerText.replace(/,/g, '');
+                                const inc = target / 50; 
+                                if (count < target) {
+                                    counter.innerText = Math.ceil(count + inc).toLocaleString();
+                                    setTimeout(updateCount, 40);
+                                } else {
+                                    counter.innerText = target.toLocaleString();
+                                }
+                            };
+                            updateCount();
+                        });
+
+                        gauges.forEach(gauge => {
+                            const percent = gauge.getAttribute('data-percent');
+                            const offset = 126 - (percent / 100) * 126; 
+                            gauge.style.strokeDashoffset = offset;
+                        });
+                    }
+                });
+            }, { threshold: 0.5 }); 
+            if(section) observer.observe(section);
+        });
+        // 3. FAQ 展開與收合控制
+        document.addEventListener("DOMContentLoaded", () => {
+            const faqButtons = document.querySelectorAll('.faq-button');
+        
+            faqButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const answer = button.nextElementSibling;
+                    const icon = button.querySelector('.faq-icon');
+                    
+                    // 檢查目前點擊的項目是否已經打開
+                    const isOpen = answer.style.maxHeight;
+        
+                    // (可選) 點擊時先關閉其他已展開的 FAQ，保持畫面整潔
+                    document.querySelectorAll('.faq-answer').forEach(ans => {
+                        ans.style.maxHeight = null;
+                        ans.previousElementSibling.querySelector('.faq-icon').textContent = '+';
+                        ans.previousElementSibling.querySelector('.faq-icon').classList.remove('rotate-45', 'text-brand-red');
+                    });
+        
+                    // 如果原本是關閉的，則打開它
+                    if (!isOpen) {
+                        answer.style.maxHeight = answer.scrollHeight + "px";
+                        icon.textContent = '+'; // 可以改成 '-' 或保持 '+' 並用旋轉動畫
+                        icon.classList.add('rotate-45', 'text-brand-red'); // 旋轉 45 度變成叉叉 (x) 
+                    }
+                });
+            });
+        });
+        
+    </script>
+</body>
+</html>
