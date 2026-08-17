@@ -155,7 +155,7 @@
     <section class="border-y border-gray-900 bg-[#121216] py-10 md:py-16">
         <div class="max-w-4xl mx-auto px-4 md:px-6 flex justify-center">
             <!-- 記得確認檔名與路徑是否正確 -->
-            <img src="1.png" alt="APP 運作流程：一鍵回報後，系統會立即標記位置並通知附近車友" class="w-full h-auto rounded-2xl shadow-2xl">
+            <img src="1.png" alt="APP 運作流程：一鍵回報後，系統會立即標記位置並通知附近車友" class="zoomable-img w-full h-auto rounded-2xl shadow-2xl">
         </div>
     </section>
 
@@ -681,18 +681,22 @@
             slider.scrollBy({ left: direction * slider.clientWidth, behavior: 'smooth' });
         }
 
-        // 2. 社群發光儀表板與數字動畫
         document.addEventListener("DOMContentLoaded", () => {
+    
+            // ==========================================
+            // 2. 社群發光儀表板與數字動畫
+            // ==========================================
             const section = document.querySelector('#app-stats');
             const counters = document.querySelectorAll('.counter');
             const gauges = document.querySelectorAll('.gauge-arc');
             let animated = false;
-
+        
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !animated) {
                         animated = true;
-
+        
+                        // 數字跳動動畫
                         counters.forEach(counter => {
                             const target = +counter.getAttribute('data-target');
                             const updateCount = () => {
@@ -707,7 +711,8 @@
                             };
                             updateCount();
                         });
-
+        
+                        // 儀表板弧線動畫
                         gauges.forEach(gauge => {
                             const percent = gauge.getAttribute('data-percent');
                             const offset = 126 - (percent / 100) * 126; 
@@ -716,7 +721,74 @@
                     }
                 });
             }, { threshold: 0.5 }); 
-            if(section) observer.observe(section);
+            
+            if (section) observer.observe(section);
+        
+        
+            // ==========================================
+            // 3. 圖片點擊放大 (Lightbox) 功能
+            // ==========================================
+            const modal = document.getElementById("image-modal");
+            const modalImg = document.getElementById("modal-img");
+            const closeModal = document.getElementById("close-modal");
+        
+            // 確認 Modal 元素存在才執行，避免錯誤
+            if (modal && modalImg && closeModal) {
+                // 自動選取所有帶有 zoomable-img class 的圖片，以及教學區塊 (#tutorial) 內的圖片
+                const zoomableImages = document.querySelectorAll(".zoomable-img, #tutorial img");
+        
+                zoomableImages.forEach(img => {
+                    // 增加放大鏡滑鼠游標提示
+                    img.classList.add("cursor-zoom-in", "transition-transform", "duration-200", "active:scale-95");
+                    
+                    img.addEventListener("click", () => {
+                        modalImg.src = img.src;
+                        modal.classList.remove("hidden", "pointer-events-none", "opacity-0");
+                        modal.classList.add("flex", "opacity-100");
+                        
+                        // 放大彈出動畫
+                        setTimeout(() => {
+                            modalImg.classList.remove("scale-95");
+                            modalImg.classList.add("scale-100");
+                        }, 10);
+                        
+                        // 禁止背景頁面滑動
+                        document.body.style.overflow = "hidden";
+                    });
+                });
+        
+                // 關閉彈窗函式
+                const hideModal = () => {
+                    modalImg.classList.remove("scale-100");
+                    modalImg.classList.add("scale-95");
+                    modal.classList.remove("opacity-100");
+                    modal.classList.add("opacity-0", "pointer-events-none");
+                    
+                    setTimeout(() => {
+                        modal.classList.add("hidden");
+                        modal.classList.remove("flex");
+                        modalImg.src = "";
+                        // 恢復背景頁面滑動
+                        document.body.style.overflow = "";
+                    }, 300);
+                };
+        
+                // 點擊「關閉按鈕」或「黑色半透明背景」皆可關閉
+                closeModal.addEventListener("click", hideModal);
+                modal.addEventListener("click", (e) => {
+                    if (e.target !== modalImg) {
+                        hideModal();
+                    }
+                });
+        
+                // 按鍵盤 ESC 鍵亦可關閉
+                document.addEventListener("keydown", (e) => {
+                    if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+                        hideModal();
+                    }
+                });
+            }
+        
         });
         // 3. FAQ 展開與收合控制
         document.addEventListener("DOMContentLoaded", () => {
@@ -748,5 +820,15 @@
         });
         
     </script>
+    <!-- 圖片點擊放大 Lightbox 彈窗 -->
+    <div id="image-modal" class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md hidden items-center justify-center p-4 transition-all duration-300 opacity-0 pointer-events-none">
+        <!-- 關閉按鈕 -->
+        <button id="close-modal" class="absolute top-4 right-4 md:top-6 md:right-6 text-white text-3xl w-12 h-12 flex items-center justify-center rounded-full bg-gray-800/80 hover:bg-brand-red transition-all duration-300 focus:outline-none z-10">
+            &times;
+        </button>
+        
+        <!-- 放大圖片本體 -->
+        <img id="modal-img" src="" alt="圖片預覽" class="max-w-full max-h-[85vh] rounded-2xl object-contain shadow-2xl transition-transform duration-300 scale-95 select-none">
+    </div>
 </body>
 </html>
